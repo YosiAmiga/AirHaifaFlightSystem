@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Final2" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bf3e247f-dd0c-4906-877c-4a3ce25c7a4a">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="UCan new"/>
+	<parameter name="FlightDeparture" class="java.sql.Date"/>
+	<parameter name="FlightArrival" class="java.sql.Date"/>
+	<parameter name="Quantity" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT Flight.FlightSerialNumber, Flight.FlightDeparture, Flight.FlightArrival, Flight.Status, Flight.OriginAirportID, Flight.DestinationAirportID, Seat.Class
+FROM (Airplane INNER JOIN Flight ON Airplane.AirplaneSerialNumber = Flight.AirplaneSerialNumber) INNER JOIN Seat ON (Airplane.AirplaneSerialNumber = Seat.AirplaneSerialNumber) AND (Airplane.AirplaneSerialNumber = Seat.AirplaneSerialNumber)
+GROUP BY Flight.FlightSerialNumber, Flight.FlightDeparture, Flight.FlightArrival, Flight.Status, Flight.OriginAirportID, Flight.DestinationAirportID, Seat.Class, Airplane.AirplaneSerialNumber
+HAVING (((Flight.FlightDeparture)>$P{FlightDeparture}) AND ((Flight.FlightArrival)<$P{FlightArrival}) AND ((Seat.Class)='Low-Cost') AND ((Count(Seat.Class))>$P{Quantity}))
+ORDER BY Flight.FlightDeparture DESC , Flight.FlightArrival DESC;]]>
+	</queryString>
+	<field name="FlightSerialNumber" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="FlightSerialNumber"/>
+		<property name="com.jaspersoft.studio.field.label" value="FlightSerialNumber"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Flight"/>
+	</field>
+	<field name="FlightDeparture" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="FlightDeparture"/>
+		<property name="com.jaspersoft.studio.field.label" value="FlightDeparture"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Flight"/>
+	</field>
+	<field name="FlightArrival" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="FlightArrival"/>
+		<property name="com.jaspersoft.studio.field.label" value="FlightArrival"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Flight"/>
+	</field>
+	<field name="Status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Status"/>
+		<property name="com.jaspersoft.studio.field.label" value="Status"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Flight"/>
+	</field>
+	<field name="OriginAirportID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="OriginAirportID"/>
+		<property name="com.jaspersoft.studio.field.label" value="OriginAirportID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Flight"/>
+	</field>
+	<field name="DestinationAirportID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="DestinationAirportID"/>
+		<property name="com.jaspersoft.studio.field.label" value="DestinationAirportID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Flight"/>
+	</field>
+	<group name="FlightSerialNumber">
+		<groupExpression><![CDATA[$F{FlightSerialNumber}]]></groupExpression>
+	</group>
+	<group name="FlightDeparture">
+		<groupExpression><![CDATA[$F{FlightDeparture}]]></groupExpression>
+	</group>
+	<group name="FlightArrival">
+		<groupExpression><![CDATA[$F{FlightArrival}]]></groupExpression>
+	</group>
+	<group name="Status">
+		<groupExpression><![CDATA[$F{Status}]]></groupExpression>
+	</group>
+	<group name="OriginAirportID">
+		<groupExpression><![CDATA[$F{OriginAirportID}]]></groupExpression>
+	</group>
+	<group name="DestinationAirportID">
+		<groupExpression><![CDATA[$F{DestinationAirportID}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="240" y="30" width="127" height="30" uuid="767445bd-1c71-4993-a126-a4d800d8531b"/>
+				<text><![CDATA[BIG FLIGHTS REPORT]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="92" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="40" width="80" height="30" uuid="16aa5f7c-0ddc-4505-9bf1-79ebb714ffbb"/>
+				<text><![CDATA[Flight number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="40" width="70" height="30" uuid="5e561bf7-e0be-4d47-a35e-bb6ef4d9aedd"/>
+				<text><![CDATA[Departure]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="40" width="50" height="30" uuid="153c5c6e-99d1-4cac-9d21-054536966108"/>
+				<text><![CDATA[Arrival]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="350" y="40" width="50" height="30" uuid="5bdca245-e085-4fed-94a1-5d1a8b50f0e6"/>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="40" width="50" height="30" uuid="3160c0a1-0d89-4727-a49e-74c28749e01e"/>
+				<text><![CDATA[Origin]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="520" y="40" width="55" height="30" uuid="a6827763-d071-4de1-bcee-a31638d6e010"/>
+				<text><![CDATA[Destination]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="30" width="100" height="30" uuid="04fb53ba-9f78-4851-937e-f5ffd895e64f"/>
+				<textFieldExpression><![CDATA[$F{FlightSerialNumber}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="30" width="100" height="30" uuid="1e4933f2-f987-49e8-ba55-38cb86b94c8f"/>
+				<textFieldExpression><![CDATA[$F{FlightDeparture}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="220" y="30" width="100" height="30" uuid="797ca866-1f0e-494e-8493-d29b4d4f9e09"/>
+				<textFieldExpression><![CDATA[$F{FlightArrival}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="30" width="45" height="30" uuid="3b9cd819-92e5-4cf4-8ff7-de45bf0a6e95"/>
+				<textFieldExpression><![CDATA[$F{OriginAirportID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="520" y="30" width="55" height="30" uuid="17e6ec63-104d-45fc-aa8b-c1a048f498d0"/>
+				<textFieldExpression><![CDATA[$F{DestinationAirportID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="340" y="30" width="60" height="30" uuid="579c48ee-7d27-4c06-981c-78443ea4552d"/>
+				<textFieldExpression><![CDATA[$F{Status}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

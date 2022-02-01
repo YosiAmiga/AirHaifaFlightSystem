@@ -19,6 +19,8 @@ public class Consts {
 			  "{ call SQL_ADD_SEAT(?,?,?,?) }";
 	  
 	//selection queries
+	  
+	  public static final String SQL_GET_FLIGHT= "{ call SQL_GET_FLIGHT(?) }";
 	  public static final String SQL_GET_ALL_FLIGHTS= "SELECT FlightSerialNumber,"
 	  		+ "FlightDeparture, FlightArrival, "
 	  		+ "AirplaneSerialNumber, Status,"
@@ -29,13 +31,17 @@ public class Consts {
 	  		+ " City,"
 	  		+ "TimeZone"
 	  		+ "\nFROM Airport";
+	  
 	  public static final String SQL_GET_ALL_AIRPLANES= "SELECT * FROM Airplane";
 	  public static final String SQL_GET_AIRPLANE= "{ call SQL_GET_AIRPLANE(?) }";
+	  public static final String FLIGHTS_FROM_DATE= "{ call FLIGHTS_FROM_DATE(?) }";
+	  public static final String GET_SEAT_BY_FLIGHT= "{ call GET_SEAT_BY_FLIGHT(?) }";
 
 	//update queries
 	  public static final String SQL_UPDATE_FLIGHT= "{ call SQL_UPDATE_FLIGHT(?,?,?,?,?,?,?,?,?) }";
 	  public static final String SQL_UPDATE_AIRPORT= "{ call SQL_UPDATE_AIRPORT(?,?,?,?) }";
 	  public static final String SQL_UPDATE_AIRPLANE= "{ call SQL_UPDATE_AIRPLANE(?,?) }";
+	  public static final String SQL_UPDATE_FLIGHT_STATUS= "{ call SQL_UPDATE_FLIGHT_STATUS(?,?,?,?,?,?,?,?,?) }";
 	  
 	//delete queries
 	  public static final String SQL_DELETE_AIRPLANE =
@@ -45,6 +51,21 @@ public class Consts {
 			  "{ call SQL_DELETE_AIRPORT(?) }";
 	  public static final String SQL_DELETE_SEAT =
 			  "{ call SQL_DELETE_SEAT(?) }";
+	  
+	//reports queries
+	  public static final String BIG_FLIGHTS_REPORT =
+			  "SELECT Flight.FlightSerialNumber, Airport.Country, Airport.City, Airport_1.Country AS CountryTo, Airport_1.City AS CityTo, Flight.FlightDeparture, Flight.FlightArrival, Flight.Status \n"
+			  + "FROM Airport INNER JOIN ((Flight INNER JOIN Airport AS Airport_1 ON Flight.DestinationAirportID = Airport_1.UniqueAirportID) INNER JOIN QueryCountSeat ON Flight.AirplaneSerialNumber = QueryCountSeat.TailNumber) ON TblAirport.Code = TblFlight.CodeDepartureAirport\n"
+			  + "WHERE (((TblFlight.DepartureTime)>=[startDate] And (TblFlight.DepartureTime)<=[endDate]) AND ((TblFlight.LandingTime)>=[startDate] And (TblFlight.LandingTime)<=[endDate]) AND ((QueryCountSeat.CountOfSeatID)>=[seats]))\n"
+			  + "GROUP BY TblFlight.UniqueSerialNumber, TblAirport.Country, TblAirport.City, TblAirport_1.Country, TblAirport_1.City, TblFlight.DepartureTime, TblFlight.LandingTime, TblFlight.Status\n"
+			  + "ORDER BY TblAirport_1.Country DESC , TblAirport_1.City DESC , TblFlight.DepartureTime DESC , TblFlight.LandingTime DESC; }";
+	  
+	  public static final String BIG_FLIGHTS =
+"SELECT TblFlight.UniqueSerialNumber, TblAirport.Country, TblAirport.City, TblAirport_1.Country AS CountryTo, TblAirport_1.City AS CityTo, TblFlight.DepartureTime, TblFlight.LandingTime, TblFlight.Status\n"
++ "FROM TblAirport INNER JOIN ((TblFlight INNER JOIN TblAirport AS TblAirport_1 ON TblFlight.CodeDestinationAirport = TblAirport_1.Code) INNER JOIN QueryCountSeat ON TblFlight.TailNumber = QueryCountSeat.TailNumber) ON TblAirport.Code = TblFlight.CodeDepartureAirport\n"
++ "WHERE (((TblFlight.DepartureTime)>=[startDate] And (TblFlight.DepartureTime)<=[endDate]) AND ((TblFlight.LandingTime)>=[startDate] And (TblFlight.LandingTime)<=[endDate]) AND ((QueryCountSeat.CountOfSeatID)>=[seats]))\n"
++ "GROUP BY TblFlight.UniqueSerialNumber, TblAirport.Country, TblAirport.City, TblAirport_1.Country, TblAirport_1.City, TblFlight.DepartureTime, TblFlight.LandingTime, TblFlight.Status\n"
++ "ORDER BY TblAirport_1.Country DESC , TblAirport_1.City DESC , TblFlight.DepartureTime DESC , TblFlight.LandingTime DESC;";
 	  
 	  
 	private static String getDBPath() {

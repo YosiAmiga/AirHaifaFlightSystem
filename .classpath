@@ -13,5 +13,6 @@
 	<classpathentry kind="lib" path="UCanAccess-5.0.1.bin/ucanaccess-5.0.1.jar"/>
 	<classpathentry kind="lib" path="UCanAccess-5.0.1.bin/loader/ucanload.jar"/>
 	<classpathentry kind="lib" path="UCanAccess-5.0.1.bin/lib/jackcess-4.0.1.jar"/>
+	<classpathentry kind="lib" path="json-simple-2.3.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

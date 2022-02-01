@@ -86,7 +86,6 @@
                      </font>
                   </Text>
                   <ComboBox fx:id="airplaneInFlight" layoutX="287.0" layoutY="270.0" prefHeight="26.0" prefWidth="456.0" promptText="Select airplane" />
-                  <Button layoutX="786.0" layoutY="281.0" mnemonicParsing="false" text="Validate Flight Time Data" />
                   <ComboBox fx:id="departureHour" layoutX="578.0" layoutY="189.0" prefHeight="26.0" prefWidth="82.0" promptText="Hour" />
                   <ComboBox fx:id="departureMinute" layoutX="687.0" layoutY="189.0" prefHeight="26.0" prefWidth="99.0" promptText="Minute" />
                   <ComboBox fx:id="arrivalHour" layoutX="578.0" layoutY="227.0" prefHeight="26.0" prefWidth="81.0" promptText="Hour" />
@@ -108,6 +107,7 @@
                         <Font name="Arial Bold Italic" size="18.0" />
                      </font>
                   </Text>
+                  <ComboBox fx:id="flightStatus" layoutX="788.0" layoutY="271.0" prefWidth="150.0" promptText="Flight Status" />
                </children></AnchorPane>
       </content>
     </Tab>

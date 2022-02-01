@@ -10,6 +10,8 @@ import java.util.Date;
 import java.util.ResourceBundle;
 import java.sql.*;
 import control.ControlFlight;
+import control.ControlJSON;
+
 import entity.Airplane;
 import entity.Airport;
 import entity.Flight;
@@ -25,11 +27,25 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import utils.FlightStatus;
 
 public class ManagerFlyScreen implements Initializable {
 	
 	private ControlFlight control;
+	private ControlJSON controlJson;
+//	
+//	@FXML
+//	private Button exportJSON;
+	
+	@FXML
+	public void doingExport()
+	{
+		//get the current date and pass it to the function
+		java.sql.Date today = java.sql.Date.valueOf(java.time.LocalDate.now());
+		System.out.println(today);
+		controlJson.getInstance().exportToJSON(today);
+	}
 	
 	/**************************************Flight Page*****************************************/
 	
@@ -38,6 +54,8 @@ public class ManagerFlyScreen implements Initializable {
 	@FXML
 	private Button loadFlightData;
 	
+	@FXML
+	private ComboBox<String> flightStatus;
 	
 	@FXML
 	private TextField flightNumber;
@@ -311,6 +329,16 @@ public class ManagerFlyScreen implements Initializable {
 		
 	}
 
+	public void initStatus() {
+		ObservableList<String> ObservableListStatus = FXCollections.observableArrayList();
+		ArrayList<String> s = new ArrayList<String>();
+		for(FlightStatus fs : FlightStatus.values()) {
+			s.add(String.valueOf(fs));
+		}
+		ObservableListStatus.addAll(s);
+
+		flightStatus.setItems(ObservableListStatus);		
+	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -318,6 +346,8 @@ public class ManagerFlyScreen implements Initializable {
 		initAirports();
 		initAirplanes();
 		initTime();
+		initStatus();
+		doingExport();
 		
 		
 		/**************************************Flight Page*****************************************/
@@ -387,6 +417,7 @@ public class ManagerFlyScreen implements Initializable {
 					airplaneInFlight.setValue(f.getAirplane());
 					originAirports.setValue(String.valueOf(f.getOriginAirport()));
 					destAirports.setValue(String.valueOf(f.getDestinationAirport()));
+					flightStatus.setValue(String.valueOf(f.getStatus()));
 
 				}
 			}
@@ -434,6 +465,7 @@ public class ManagerFlyScreen implements Initializable {
 			//Extract only the Airport ID
 			String destAirportNumber= destA.replaceAll("[^0-9]", "");	
 
+			String stat = flightStatus.getValue();
 //			//can't have both origin and destination airport to be the same airport 
 //			if( originAirportNumber == destAirportNumber) {
 //				
@@ -444,7 +476,7 @@ public class ManagerFlyScreen implements Initializable {
 				if(f.getFlightSerialNumber().equals(flightNumber.getText())) {
 					//First Section -> updating an existing flight
 					if(control.updateFlight(flightNumber.getText(),departureTimeStamp,arrivalTimeStamp,airplaneNumber,
-							"On-Time",Integer.parseInt(originAirportNumber), Integer.parseInt(destAirportNumber))) {
+							stat,Integer.parseInt(originAirportNumber), Integer.parseInt(destAirportNumber))) {
 						successAdded("Flight", "Updating Flight");
 						refreshScreen();
 						return;
@@ -454,7 +486,7 @@ public class ManagerFlyScreen implements Initializable {
 
 			
 			if(control.createNewFlight(flightNumber.getText(),departureTimeStamp,arrivalTimeStamp,airplaneNumber,
-					"On-Time",Integer.parseInt(originAirportNumber), Integer.parseInt(destAirportNumber))) {
+					"OnTime",Integer.parseInt(originAirportNumber), Integer.parseInt(destAirportNumber))) {
 				successAdded("Flight", "Adding Flight");
 				refreshScreen();
 			}

@@ -14,6 +14,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
 public class ManagerFlyMainScreen implements Initializable{
@@ -23,6 +24,8 @@ public class ManagerFlyMainScreen implements Initializable{
 	private StackPane mainPane;
 	@FXML
 	private ToggleButton add;
+	@FXML
+	private ToggleButton reports;
 	@FXML
 	private ToggleButton exit;
 	@Override
@@ -55,10 +58,10 @@ public class ManagerFlyMainScreen implements Initializable{
 	public void loadReport(ActionEvent e)
 	{
 		try {
-			if(add.isSelected())
+			if(reports.isSelected())
 			{
 
-				TabPane pane=FXMLLoader.load(getClass().getResource("ManagerReportsPage.fxml"));
+				Pane pane=FXMLLoader.load(getClass().getResource("ManagerReportsPage.fxml"));
 				pane.setPrefSize(rootPane.getWidth(), rootPane.getHeight());
 				rootPane.getChildren().removeAll(rootPane.getChildren());
 				rootPane.getChildren().add(pane);

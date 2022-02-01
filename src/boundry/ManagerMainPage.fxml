@@ -34,7 +34,7 @@
                         <Insets bottom="15.0" left="5.0" right="5.0" top="5.0" />
                      </VBox.margin>
                   </ToggleButton>
-                  <ToggleButton contentDisplay="TOP" mnemonicParsing="false" prefHeight="118.0" prefWidth="136.0" styleClass="button" text="Reports">
+                  <ToggleButton fx:id="reports" contentDisplay="TOP" mnemonicParsing="false" onAction="#loadReport" prefHeight="118.0" prefWidth="136.0" styleClass="button" text="Reports">
                      <padding>
                         <Insets bottom="5.0" left="5.0" top="5.0" />
                      </padding>

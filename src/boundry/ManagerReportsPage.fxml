@@ -1,20 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="556.0" prefWidth="669.0" tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16">
-  <tabs>
-    <Tab text="Big Flights">
-      <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-      </content>
-    </Tab>
-    <Tab text="Untitled Tab 2">
-      <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-      </content>
-    </Tab>
-  </tabs>
-</TabPane>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="846.0" prefWidth="842.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boundry.ManagerReportsScreen">
+   <children>
+      <Text layoutX="221.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Big Flights Report" textAlignment="CENTER" underline="true" wrappingWidth="307.3333740234375">
+         <font>
+            <Font name="Arial Bold Italic" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="362.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select departure date:" textAlignment="CENTER" underline="true" wrappingWidth="200.13336181640625">
+         <font>
+            <Font name="Arial Bold Italic" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="591.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select arrival date:" textAlignment="CENTER" underline="true" wrappingWidth="175.0">
+         <font>
+            <Font name="Arial Bold Italic" size="18.0" />
+         </font>
+      </Text>
+      <TextField fx:id="seatsQuantity" layoutX="85.0" layoutY="210.0" promptText="Enter quantity" />
+      <DatePicker fx:id="departureDate" layoutX="377.0" layoutY="210.0" prefHeight="25.0" prefWidth="149.0" />
+      <DatePicker fx:id="arrivalDate" layoutX="617.0" layoutY="210.0" prefHeight="25.0" prefWidth="149.0" />
+      <Button fx:id="btnCreateReport" layoutX="287.0" layoutY="339.0" mnemonicParsing="false" onAction="#createReport" prefHeight="25.0" prefWidth="175.0" text="Create report" />
+      <Text layoutX="14.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select &quot;Low-Cost&quot; seats quantity:" textAlignment="CENTER" underline="true" wrappingWidth="307.3333740234375">
+         <font>
+            <Font name="Arial Bold Italic" size="18.0" />
+         </font>
+      </Text>
+   </children>
+</Pane>
