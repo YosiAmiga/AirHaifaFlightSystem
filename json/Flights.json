@@ -1,176 +1,146 @@
 {
 	"Flights":[
 		{
-			"ORIGINAIRPORTID":"1",
-			"AIRPLANESERIALNUMBER":"ABA99",
+			"ORIGINAIRPORTID":"6",
+			"AIRPLANESERIALNUMBER":"CHECK",
 			"STATUS":"OnTime",
-			"FLIGHTSERIALNUMBER":"YOSI",
-			"FLIGHTARRIVAL":"2022-02-04 00:00:00.000000",
+			"FLIGHTSERIALNUMBER":"CHECK1",
+			"FLIGHTARRIVAL":"2022-03-03 10:15:00.000000",
 			"Seats":[
 				{
 					"COLUMNLETTER":"a",
 					"ROWNUMBER":"1",
-					"AIRPLANESERIALNUMBER":"ABA99",
+					"AIRPLANESERIALNUMBER":"CHECK",
 					"CLASS":"First-Class"
 				},
 				{
 					"COLUMNLETTER":"b",
 					"ROWNUMBER":"2",
-					"AIRPLANESERIALNUMBER":"ABA99",
+					"AIRPLANESERIALNUMBER":"CHECK",
 					"CLASS":"Business"
 				},
 				{
 					"COLUMNLETTER":"b",
 					"ROWNUMBER":"3",
-					"AIRPLANESERIALNUMBER":"ABA99",
+					"AIRPLANESERIALNUMBER":"CHECK",
 					"CLASS":"Business"
 				},
 				{
 					"COLUMNLETTER":"b",
 					"ROWNUMBER":"4",
-					"AIRPLANESERIALNUMBER":"ABA99",
+					"AIRPLANESERIALNUMBER":"CHECK",
 					"CLASS":"Business"
 				},
 				{
 					"COLUMNLETTER":"c",
 					"ROWNUMBER":"5",
-					"AIRPLANESERIALNUMBER":"ABA99",
+					"AIRPLANESERIALNUMBER":"CHECK",
 					"CLASS":"Low-Cost"
 				},
 				{
 					"COLUMNLETTER":"c",
 					"ROWNUMBER":"6",
-					"AIRPLANESERIALNUMBER":"ABA99",
+					"AIRPLANESERIALNUMBER":"CHECK",
 					"CLASS":"Low-Cost"
 				},
 				{
 					"COLUMNLETTER":"c",
 					"ROWNUMBER":"7",
-					"AIRPLANESERIALNUMBER":"ABA99",
+					"AIRPLANESERIALNUMBER":"CHECK",
 					"CLASS":"Low-Cost"
 				},
 				{
 					"COLUMNLETTER":"c",
 					"ROWNUMBER":"8",
-					"AIRPLANESERIALNUMBER":"ABA99",
+					"AIRPLANESERIALNUMBER":"CHECK",
 					"CLASS":"Low-Cost"
 				},
 				{
 					"COLUMNLETTER":"c",
 					"ROWNUMBER":"9",
-					"AIRPLANESERIALNUMBER":"ABA99",
+					"AIRPLANESERIALNUMBER":"CHECK",
 					"CLASS":"Low-Cost"
 				},
 				{
 					"COLUMNLETTER":"c",
 					"ROWNUMBER":"10",
-					"AIRPLANESERIALNUMBER":"ABA99",
+					"AIRPLANESERIALNUMBER":"CHECK",
 					"CLASS":"Low-Cost"
 				}
 			],
-			"FLIGHTDEPARTURE":"2022-02-03 02:02:00.000000",
-			"DESTINATIONAIRPORTID":"2"
+			"FLIGHTDEPARTURE":"2022-03-02 10:10:00.000000",
+			"DESTINATIONAIRPORTID":"7"
 		},
 		{
-			"ORIGINAIRPORTID":"7",
-			"AIRPLANESERIALNUMBER":"BIGI",
+			"ORIGINAIRPORTID":"1",
+			"AIRPLANESERIALNUMBER":"CHECK",
 			"STATUS":"OnTime",
-			"FLIGHTSERIALNUMBER":"Yosi123",
-			"FLIGHTARRIVAL":"2022-02-02 16:30:00.000000",
+			"FLIGHTSERIALNUMBER":"CHECK2",
+			"FLIGHTARRIVAL":"2022-02-03 08:00:00.000000",
 			"Seats":[
 				{
 					"COLUMNLETTER":"a",
 					"ROWNUMBER":"1",
-					"AIRPLANESERIALNUMBER":"BIGI",
-					"CLASS":"First-Class"
-				},
-				{
-					"COLUMNLETTER":"a",
-					"ROWNUMBER":"2",
-					"AIRPLANESERIALNUMBER":"BIGI",
+					"AIRPLANESERIALNUMBER":"CHECK",
 					"CLASS":"First-Class"
 				},
 				{
 					"COLUMNLETTER":"b",
+					"ROWNUMBER":"2",
+					"AIRPLANESERIALNUMBER":"CHECK",
+					"CLASS":"Business"
+				},
+				{
+					"COLUMNLETTER":"b",
 					"ROWNUMBER":"3",
-					"AIRPLANESERIALNUMBER":"BIGI",
+					"AIRPLANESERIALNUMBER":"CHECK",
 					"CLASS":"Business"
 				},
 				{
 					"COLUMNLETTER":"b",
 					"ROWNUMBER":"4",
-					"AIRPLANESERIALNUMBER":"BIGI",
-					"CLASS":"Business"
-				},
-				{
-					"COLUMNLETTER":"b",
-					"ROWNUMBER":"5",
-					"AIRPLANESERIALNUMBER":"BIGI",
-					"CLASS":"Business"
-				},
-				{
-					"COLUMNLETTER":"b",
-					"ROWNUMBER":"6",
-					"AIRPLANESERIALNUMBER":"BIGI",
-					"CLASS":"Business"
-				},
-				{
-					"COLUMNLETTER":"b",
-					"ROWNUMBER":"7",
-					"AIRPLANESERIALNUMBER":"BIGI",
+					"AIRPLANESERIALNUMBER":"CHECK",
 					"CLASS":"Business"
 				},
 				{
 					"COLUMNLETTER":"c",
+					"ROWNUMBER":"5",
+					"AIRPLANESERIALNUMBER":"CHECK",
+					"CLASS":"Low-Cost"
+				},
+				{
+					"COLUMNLETTER":"c",
+					"ROWNUMBER":"6",
+					"AIRPLANESERIALNUMBER":"CHECK",
+					"CLASS":"Low-Cost"
+				},
+				{
+					"COLUMNLETTER":"c",
+					"ROWNUMBER":"7",
+					"AIRPLANESERIALNUMBER":"CHECK",
+					"CLASS":"Low-Cost"
+				},
+				{
+					"COLUMNLETTER":"c",
 					"ROWNUMBER":"8",
-					"AIRPLANESERIALNUMBER":"BIGI",
+					"AIRPLANESERIALNUMBER":"CHECK",
 					"CLASS":"Low-Cost"
 				},
 				{
 					"COLUMNLETTER":"c",
 					"ROWNUMBER":"9",
-					"AIRPLANESERIALNUMBER":"BIGI",
+					"AIRPLANESERIALNUMBER":"CHECK",
 					"CLASS":"Low-Cost"
 				},
 				{
 					"COLUMNLETTER":"c",
 					"ROWNUMBER":"10",
-					"AIRPLANESERIALNUMBER":"BIGI",
-					"CLASS":"Low-Cost"
-				},
-				{
-					"COLUMNLETTER":"c",
-					"ROWNUMBER":"11",
-					"AIRPLANESERIALNUMBER":"BIGI",
-					"CLASS":"Low-Cost"
-				},
-				{
-					"COLUMNLETTER":"c",
-					"ROWNUMBER":"12",
-					"AIRPLANESERIALNUMBER":"BIGI",
-					"CLASS":"Low-Cost"
-				},
-				{
-					"COLUMNLETTER":"c",
-					"ROWNUMBER":"13",
-					"AIRPLANESERIALNUMBER":"BIGI",
-					"CLASS":"Low-Cost"
-				},
-				{
-					"COLUMNLETTER":"c",
-					"ROWNUMBER":"14",
-					"AIRPLANESERIALNUMBER":"BIGI",
-					"CLASS":"Low-Cost"
-				},
-				{
-					"COLUMNLETTER":"c",
-					"ROWNUMBER":"15",
-					"AIRPLANESERIALNUMBER":"BIGI",
+					"AIRPLANESERIALNUMBER":"CHECK",
 					"CLASS":"Low-Cost"
 				}
 			],
-			"FLIGHTDEPARTURE":"2022-02-02 11:11:00.000000",
-			"DESTINATIONAIRPORTID":"6"
+			"FLIGHTDEPARTURE":"2023-02-01 00:00:00.000000",
+			"DESTINATIONAIRPORTID":"7"
 		}
 	]
 }

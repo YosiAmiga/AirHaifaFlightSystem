@@ -8,6 +8,9 @@ public class Consts {
 	public static final String JDBC_STR = "net.ucanaccess.jdbc.UcanaccessDriver";
 	
 	//insert queries
+	
+	  public static final String SQL_ADD_SHIFT =
+	  "{ call SQL_ADD_SHIFT(?,?) }";
 	  public static final String SQL_ADD_AIRPLANE =
 			  "{ call SQL_ADD_AIRPLANE(?,?) }";
 	  public static final String SQL_ADD_AIRPORT =
@@ -19,7 +22,12 @@ public class Consts {
 			  "{ call SQL_ADD_SEAT(?,?,?,?) }";
 	  
 	//selection queries
-	  
+	  	public static final String SQL_GET_ALL_FLIGHT_ATTENDANTS = "SELECT * FROM FlightAttendant";
+		public static final String SQL_GET_ALL_GROUND_ATTENDANTS= "SELECT * FROM GroundAttendant";
+		public static final String SQL_GET_ALL_PILOTS= "SELECT * FROM Pilot";
+
+	  public static final String SQL_GET_ALL_SHIFTS= "SELECT * FROM Shift";
+
 	  public static final String SQL_GET_FLIGHT= "{ call SQL_GET_FLIGHT(?) }";
 	  public static final String SQL_GET_ALL_FLIGHTS= "SELECT FlightSerialNumber,"
 	  		+ "FlightDeparture, FlightArrival, "

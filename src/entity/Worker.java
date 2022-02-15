@@ -1,5 +1,6 @@
 package entity;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Calendar;
 
@@ -9,8 +10,8 @@ public abstract class Worker {
 	private int id;
 	private String firstName;
 	private String lastName;
-	private Calendar startingDate;
-	private Calendar finishingDate;
+	private Date startingDate;
+	private Date finishingDate;
 	
 	
 	
@@ -21,7 +22,7 @@ public abstract class Worker {
 	 * @param startingDate
 	 * @param finishingDate
 	 */
-	public Worker(int id, String firstName, String lastName, Calendar startingDate, Calendar finishingDate) {
+	public Worker(int id, String firstName, String lastName, Date startingDate, Date finishingDate) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -49,16 +50,16 @@ public abstract class Worker {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public Calendar getStartingDate() {
+	public Date getStartingDate() {
 		return startingDate;
 	}
-	public void setStartingDate(Calendar startingDate) {
+	public void setStartingDate(Date startingDate) {
 		this.startingDate = startingDate;
 	}
-	public Calendar getFinishingDate() {
+	public Date getFinishingDate() {
 		return finishingDate;
 	}
-	public void setFinishingDate(Calendar finishingDate) {
+	public void setFinishingDate(Date finishingDate) {
 		this.finishingDate = finishingDate;
 	}
 	

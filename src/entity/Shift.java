@@ -1,25 +1,48 @@
 package entity;
 
+import java.sql.Date;
+import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 
+import org.joda.time.DateTimeUtils;
+
 public class Shift {
 	
-	private Calendar startDate;
-	private Calendar endDate;
+	private String startDate;
+	private String endDate;
+
 	private HashMap<Integer ,GroundAttendant> groundAttendants;
-	
 	/**
 	 * @param startDate
 	 * @param endDate
 	 */
-	public Shift(Calendar startDate, Calendar endDate) {
+	public Shift(Date startDate, Date endDate) {
 		super();
-		this.startDate = startDate;
-		this.endDate = endDate;
+		this.startDate = startDate.toString();
+		this.endDate = endDate.toString();
+
+
 		groundAttendants = new HashMap<Integer ,GroundAttendant>();
 	}
+	
+
+
+
+	public HashMap<Integer, GroundAttendant> getGroundAttendants() {
+		return groundAttendants;
+	}
+
+
+	public void setGroundAttendants(HashMap<Integer, GroundAttendant> groundAttendants) {
+		this.groundAttendants = groundAttendants;
+	}
+
+
+
 
 	
 	//Methods to add and remove a ground attendant for the shift	
@@ -34,28 +57,28 @@ public class Shift {
 	/**
 	 * @return the startDate
 	 */
-	public Calendar getStartDate() {
+	public String getStartDate() {
 		return startDate;
 	}
 
 	/**
 	 * @param startDate the startDate to set
 	 */
-	public void setStartDate(Calendar startDate) {
+	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
 
 	/**
 	 * @return the endDate
 	 */
-	public Calendar getEndDate() {
+	public String getEndDate() {
 		return endDate;
 	}
 
 	/**
 	 * @param endDate the endDate to set
 	 */
-	public void setEndDate(Calendar endDate) {
+	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
 

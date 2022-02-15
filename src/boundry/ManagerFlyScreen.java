@@ -12,9 +12,7 @@ import java.sql.*;
 import control.ControlFlight;
 import control.ControlJSON;
 
-import entity.Airplane;
-import entity.Airport;
-import entity.Flight;
+import entity.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -32,11 +30,10 @@ import utils.FlightStatus;
 
 public class ManagerFlyScreen implements Initializable {
 	
-	private ControlFlight control;
+	private ControlFlight control = new ControlFlight();
 	private ControlJSON controlJson;
-//	
-//	@FXML
-//	private Button exportJSON;
+	@FXML
+	private Button exportJSON;
 	
 	@FXML
 	public void doingExport()
@@ -45,8 +42,7 @@ public class ManagerFlyScreen implements Initializable {
 		java.sql.Date today = java.sql.Date.valueOf(java.time.LocalDate.now());
 		System.out.println(today);
 		controlJson.getInstance().exportToJSON(today);
-	}
-	
+	}	
 	/**************************************Flight Page*****************************************/
 	
 	@FXML
@@ -210,7 +206,247 @@ public class ManagerFlyScreen implements Initializable {
 	private TableColumn<Airplane,String> airplaneNumber;
 	@FXML
 	private TableColumn<Airplane, Integer> airPlaneSize;
+
+
+
+	/**************************************shift Page*****************************************/
+	@FXML
+	private DatePicker shiftsStartDate;
+
+	@FXML
+	private DatePicker shiftsEndDate;
+
+	@FXML
+	private Button addShiftsBTN;
+
+	/****************shift Table****************/
+
+	@FXML
+	private TableView<Shift> shiftsTable;
+
+	@FXML
+	private TableColumn<Shift,String> shiftStartDateColum;
+
+	@FXML
+	private TableColumn<Shift,String> shiftEndDateColum;
+
+
 	
+	/*get all the airplanes from the database to show in table view*/
+	private ObservableList<Shift> getShiftsToTable(){
+	ObservableList<Shift> shifts=FXCollections.observableArrayList();
+	ArrayList<Shift> query;
+	try {
+		query = new ArrayList<Shift>(ControlFlight.getInstance().getShifts());
+		shifts.addAll(query);
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return shifts;	
+	}	
+
+
+	/**************************************pilot Page*****************************************/
+
+	@FXML
+	private TextField PilotID;
+
+	@FXML
+	private TextField pilotFIrstName;
+
+	@FXML
+	private TextField PilotLastName;
+
+	@FXML
+	private DatePicker pilotStartingDate;
+
+	@FXML
+	private DatePicker pilotFinishingDate;
+
+	@FXML
+	private DatePicker pilotLicenceDateIssued;
+
+	@FXML
+	private Button addPilotBTN;
+
+	@FXML
+	private ComboBox<String> pilotsListToRemove;
+
+	@FXML
+	private Button removePilorBTN;
+
+	@FXML
+	private ComboBox<String> shiftsPilotCanBeAssignedTo;
+
+	@FXML
+	private Button AssignPilotBTN;
+
+	/****************pilot Table****************/
+
+	@FXML
+	private TableView<Pilot> pilotsTable;
+
+	@FXML
+	private TableColumn<Pilot,String> PilotIdColum;
+
+	@FXML
+	private TableColumn<Pilot,String> firstNameColum;
+
+	@FXML
+	private TableColumn<Pilot,String> lastNameColum;
+
+	@FXML
+	private TableColumn<Pilot,Date> startingDateColum;
+
+	@FXML
+	private TableColumn<Pilot,Date> finishingDateColum;
+
+	@FXML
+	private TableColumn<Pilot,String > licenseNumberColum;
+
+	@FXML
+	private TableColumn<Pilot,Date> licenseDateIssuedColum;
+
+
+
+
+
+	/**************************************ground attandent Page*****************************************/
+
+
+	@FXML
+	private TextField groundAttendantID;
+
+	@FXML
+	private TextField groundAttendantFIrstName;
+
+	@FXML
+	private TextField groundAttendantLastName;
+
+	@FXML
+	private DatePicker groundAttendantStartingDate;
+
+	@FXML
+	private DatePicker groundAttendantFinishingDate;
+
+	@FXML
+	private Button addGroundAttendantBTN;
+
+	@FXML
+	private ComboBox<String> listToRemoveGroundAttendant;
+
+	@FXML
+	private Button removeGroundAttendantBTN;
+
+
+	/****************ground attandent Table****************/
+
+	@FXML
+	private TableView<GroundAttendant> groundAttandentTable;
+
+	@FXML
+	private TableColumn<GroundAttendant,Integer> groundAttendantIdColum;
+
+	@FXML
+	private TableColumn<GroundAttendant,String> groundAttendantFirstNameColum;
+
+	@FXML
+	private TableColumn<GroundAttendant,String> groundAttendantLastNameColum;
+
+	@FXML
+	private TableColumn<GroundAttendant,Date> groundAttendantStartingDateColum;
+
+	@FXML
+	private TableColumn<GroundAttendant,Date> groundAttendantFinishingDateColum;
+
+
+	/**************************************flight attandent Page*****************************************/
+	@FXML
+	private TextField flightAttendantID;
+
+	@FXML
+	private TextField flightAttendantFIrstName;
+
+	@FXML
+	private TextField flightAttendantLastName;
+
+	@FXML
+	private DatePicker flightAttendantStartingDate;
+
+	@FXML
+	private DatePicker flightAttendantFinishingDate;
+
+	@FXML
+	private Button flightAttendantAddBTN;
+
+	@FXML
+	private ComboBox<String> listToRemoveFlightAttendant;
+
+	@FXML
+	private Button removeFlightAttendantBTN;
+
+
+	/****************ground attandent Table****************/
+
+	@FXML
+	private TableView<FlightAttendant> flightAttendantTable;
+
+	@FXML
+	private TableColumn<FlightAttendant,Integer> flightAttendantIdColum;
+
+	@FXML
+	private TableColumn<FlightAttendant,String> flightAttendantFirstNameColum;
+
+	@FXML
+	private TableColumn<FlightAttendant,String> flightAttendantLastNameColum;
+
+	@FXML
+	private TableColumn<FlightAttendant,Date> flightAttendantStartingDateColum;
+
+	@FXML
+	private TableColumn<FlightAttendant,Date> flightAttendantFinishingDateColum;
+
+
+	private ObservableList<Pilot> getPilotsToTable(){ // call the function the get data from the DB
+		ObservableList<Pilot> pilots=FXCollections.observableArrayList();
+		ArrayList<Pilot> query;
+		try {
+			query = new ArrayList<Pilot>(ControlFlight.getInstance().getPilots());
+			pilots.addAll(query);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return pilots;
+	}
+	
+    private ObservableList<GroundAttendant> getGroundAttendantsToTable(){ // call the function the get data from the DB
+		ObservableList<GroundAttendant> groundAttendants=FXCollections.observableArrayList();
+		ArrayList<GroundAttendant> query;
+		try {
+			query = new ArrayList<GroundAttendant>(ControlFlight.getInstance().getGroundAttendants());
+			groundAttendants.addAll(query);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return groundAttendants;
+	}
+    
+    private ObservableList<FlightAttendant> getFlightAttendantsToTable(){ // call the function the get data from the DB
+	ObservableList<FlightAttendant> FlightAttendants=FXCollections.observableArrayList();
+	ArrayList<FlightAttendant> query;
+	try {
+		query = new ArrayList<FlightAttendant>(ControlFlight.getInstance().getFlightAttendants());
+		FlightAttendants.addAll(query);
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return FlightAttendants;
+}
+
 	/**********Getting the data from the database methods********/
 	
 	
@@ -226,9 +462,25 @@ public class ManagerFlyScreen implements Initializable {
 		e.printStackTrace();
 	}
 	return airplanes;	
-}	
+	}	
 
 	/*************Initialize all the combo boxes*************/
+	public void initShifts() {
+		//setting all the airplanes in the flights combo box
+		flightFromDB.setValue("Select Flight Serial Number");
+		ObservableList<String> flights=FXCollections.observableArrayList();
+		ArrayList<Flight> query;
+		try {
+			query = new ArrayList<Flight>(ControlFlight.getInstance().getFlights());
+			for(Flight f : query) {
+				flights.add(f.getFlightSerialNumber());
+			}
+			flightFromDB.setItems(flights);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 	public void initFlights() {
 		//setting all the airplanes in the flights combo box
@@ -347,7 +599,6 @@ public class ManagerFlyScreen implements Initializable {
 		initAirplanes();
 		initTime();
 		initStatus();
-		doingExport();
 		
 		
 		/**************************************Flight Page*****************************************/
@@ -360,7 +611,6 @@ public class ManagerFlyScreen implements Initializable {
 		fStatus.setCellValueFactory(new PropertyValueFactory<Flight, FlightStatus>("status"));
 		fOrigin.setCellValueFactory(new PropertyValueFactory<Flight, Integer>("originAirport"));
 		fDestination.setCellValueFactory(new PropertyValueFactory<Flight, Integer>("destinationAirport"));
-		flightTable.setItems(getFlightsToTable());
 		flightTable.setItems(getFlightsToTable());
 		
 		
@@ -390,6 +640,36 @@ public class ManagerFlyScreen implements Initializable {
 		airplaneNumber.setCellValueFactory(new PropertyValueFactory<Airplane, String>("airplaneSerialNumber"));
 		airPlaneSize.setCellValueFactory(new PropertyValueFactory<Airplane, Integer>("airplaneSize"));
 		airplaneTable.setItems(getAirplaneToTable());
+		/**************************************Shifts Page*****************************************/
+
+		shiftStartDateColum.setCellValueFactory(new PropertyValueFactory<Shift, String>("startDate"));
+		shiftEndDateColum.setCellValueFactory(new PropertyValueFactory<Shift, String>("endDate"));
+		shiftsTable.setItems(getShiftsToTable());
+		/**************************************Pilot Page*****************************************/
+		PilotIdColum.setCellValueFactory(new PropertyValueFactory<Pilot,String>("id"));
+		firstNameColum.setCellValueFactory(new PropertyValueFactory<Pilot,String>("firstName"));
+		lastNameColum.setCellValueFactory(new PropertyValueFactory<Pilot,String>("lastName"));
+		startingDateColum.setCellValueFactory(new PropertyValueFactory<Pilot,Date>("startingDate"));
+		finishingDateColum.setCellValueFactory(new PropertyValueFactory<Pilot,Date>("finishingDate"));
+		licenseDateIssuedColum.setCellValueFactory(new PropertyValueFactory<Pilot,Date>("licenseDateIssued"));
+		licenseNumberColum.setCellValueFactory(new PropertyValueFactory<Pilot,String>("licenseNumber"));
+		pilotsTable.setItems(getPilotsToTable());
+
+		/**************************************Ground Attendant Page*****************************************/
+		groundAttendantIdColum.setCellValueFactory(new PropertyValueFactory<GroundAttendant,Integer>("id"));
+		groundAttendantFirstNameColum.setCellValueFactory(new PropertyValueFactory<GroundAttendant,String>("firstName"));
+		groundAttendantLastNameColum.setCellValueFactory(new PropertyValueFactory<GroundAttendant,String>("lastName"));
+		groundAttendantStartingDateColum.setCellValueFactory(new PropertyValueFactory<GroundAttendant,Date>("startingDate"));
+		groundAttendantFinishingDateColum.setCellValueFactory(new PropertyValueFactory<GroundAttendant,Date>("finishingDate"));
+		groundAttandentTable.setItems(getGroundAttendantsToTable());
+
+		/**************************************Flight Attendant Page*****************************************/
+		flightAttendantIdColum.setCellValueFactory(new PropertyValueFactory<FlightAttendant,Integer>("id"));
+		flightAttendantFirstNameColum.setCellValueFactory(new PropertyValueFactory<FlightAttendant,String>("firstName"));
+		flightAttendantLastNameColum.setCellValueFactory(new PropertyValueFactory<FlightAttendant,String>("lastName"));
+		flightAttendantStartingDateColum.setCellValueFactory(new PropertyValueFactory<FlightAttendant,Date>("startingDate"));
+		flightAttendantFinishingDateColum.setCellValueFactory(new PropertyValueFactory<FlightAttendant,Date>("finishingDate"));
+		flightAttendantTable.setItems(getFlightAttendantsToTable());
 		
 	}
 
@@ -651,6 +931,25 @@ public class ManagerFlyScreen implements Initializable {
 		}
 		
 	}
+	
+	/*******************Shifts methods*******************/
+	public void btnCreateShift() {
+		control = new ControlFlight();
+		LocalDate start = shiftsStartDate.getValue();
+		LocalDate end = shiftsEndDate.getValue();
+		java.sql.Date s = java.sql.Date.valueOf(start);
+		java.sql.Date e = java.sql.Date.valueOf(end);
+
+		if(control.createNewShift(s, e)) {
+			successAdded("Shift", "Adding shift");
+			refreshScreen();
+		}
+		else {
+			System.out.println("not good");
+		}
+		
+	}
+
 	/***After action sound and alert***/
 	
 	public void successUpload() {
@@ -809,6 +1108,34 @@ public class ManagerFlyScreen implements Initializable {
 		airplaneNumber.setCellValueFactory(new PropertyValueFactory<Airplane, String>("airplaneSerialNumber"));
 		airPlaneSize.setCellValueFactory(new PropertyValueFactory<Airplane, Integer>("airplaneSize"));
 		airplaneTable.setItems(getAirplaneToTable());
+
+		/**************************************Pilot Page*****************************************/
+		PilotIdColum.setCellValueFactory(new PropertyValueFactory<Pilot,String>("id"));
+		firstNameColum.setCellValueFactory(new PropertyValueFactory<Pilot,String>("firstName"));
+		lastNameColum.setCellValueFactory(new PropertyValueFactory<Pilot,String>("lastName"));
+		startingDateColum.setCellValueFactory(new PropertyValueFactory<Pilot,Date>("startingDate"));
+		finishingDateColum.setCellValueFactory(new PropertyValueFactory<Pilot,Date>("finishingDate"));
+		licenseDateIssuedColum.setCellValueFactory(new PropertyValueFactory<Pilot,Date>("licenseDateIssued"));
+		licenseNumberColum.setCellValueFactory(new PropertyValueFactory<Pilot,String>("licenseNumber"));
+		pilotsTable.setItems(getPilotsToTable());
+
+		/**************************************Ground Attendant Page*****************************************/
+		groundAttendantIdColum.setCellValueFactory(new PropertyValueFactory<GroundAttendant,Integer>("id"));
+		groundAttendantFirstNameColum.setCellValueFactory(new PropertyValueFactory<GroundAttendant,String>("firstName"));
+		groundAttendantLastNameColum.setCellValueFactory(new PropertyValueFactory<GroundAttendant,String>("lastName"));
+		groundAttendantStartingDateColum.setCellValueFactory(new PropertyValueFactory<GroundAttendant,Date>("startingDate"));
+		groundAttendantFinishingDateColum.setCellValueFactory(new PropertyValueFactory<GroundAttendant,Date>("finishingDate"));
+		groundAttandentTable.setItems(getGroundAttendantsToTable());
+
+		/**************************************Flight Attendant Page*****************************************/
+		flightAttendantIdColum.setCellValueFactory(new PropertyValueFactory<FlightAttendant,Integer>("id"));
+		flightAttendantFirstNameColum.setCellValueFactory(new PropertyValueFactory<FlightAttendant,String>("firstName"));
+		flightAttendantLastNameColum.setCellValueFactory(new PropertyValueFactory<FlightAttendant,String>("lastName"));
+		flightAttendantStartingDateColum.setCellValueFactory(new PropertyValueFactory<FlightAttendant,Date>("startingDate"));
+		flightAttendantFinishingDateColum.setCellValueFactory(new PropertyValueFactory<FlightAttendant,Date>("finishingDate"));
+		flightAttendantTable.setItems(getFlightAttendantsToTable());
+
+		
 	}
 
 }

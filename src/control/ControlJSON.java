@@ -37,13 +37,14 @@ public class ControlJSON {
 					CallableStatement stmt = conn.prepareCall(
 							Consts.FLIGHTS_FROM_DATE)){
 					stmt.setDate(1, today);
-					ResultSet rs = stmt.executeQuery(); {
+					ResultSet rs = stmt.executeQuery();{
 				JsonArray updatedFlights = new JsonArray();
 				while (rs.next()) {
 					JsonObject flight = new JsonObject();
 
 					for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
 						flight.put(rs.getMetaData().getColumnName(i), rs.getString(i));
+						System.out.println(rs.getString(i));
 						if(i==1) {
 							flight.put("Seats",getSeatOfFlights(rs.getString(1)));
 							

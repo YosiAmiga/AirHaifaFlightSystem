@@ -1,6 +1,7 @@
 package control;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,8 +13,11 @@ import entity.Airplane;
 import entity.Airport;
 import entity.Consts;
 import entity.Flight;
+import entity.FlightAttendant;
+import entity.GroundAttendant;
 import entity.Pilot;
 import entity.Seat;
+import entity.Shift;
 import utils.SeatClass;
 
 public class ControlFlight {
@@ -25,6 +29,147 @@ public class ControlFlight {
             _instance = new ControlFlight();
         return _instance;
     }
+
+
+    /******GET Pilots******/
+    //using SQL query to get data from Access file
+    public ArrayList<Pilot> getPilots() throws Exception{
+        ArrayList<Pilot> pilots= new ArrayList<Pilot>();
+        try {
+            Class.forName(Consts.JDBC_STR);
+            //calling the GET query of all the airplanes
+            try (Connection conn = DriverManager.getConnection(Consts.CONN_STR);
+                 PreparedStatement stmt =   conn.prepareStatement(Consts.SQL_GET_ALL_PILOTS);
+                 ResultSet rs = stmt.executeQuery()){
+                while (rs.next()) {
+                    int i = 1;
+                    pilots.add(new Pilot(rs.getInt(i++), rs.getString(i++), rs.getString(i++),rs.getDate(i++),
+                            rs.getDate(i++),rs.getInt(i++),rs.getDate(i++)));
+                }
+                return pilots;
+
+            }
+
+            catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return pilots;
+    }
+
+    /******GET Ground Attandents******/
+    //using SQL query to get data from Access file
+    public ArrayList<GroundAttendant> getGroundAttendants() throws Exception{
+        ArrayList<GroundAttendant> groundAttendants= new ArrayList<GroundAttendant>();
+        try {
+            Class.forName(Consts.JDBC_STR);
+            //calling the GET query of all the airplanes
+            try (Connection conn = DriverManager.getConnection(Consts.CONN_STR);
+                 PreparedStatement stmt =   conn.prepareStatement(Consts.SQL_GET_ALL_GROUND_ATTENDANTS);
+                 ResultSet rs = stmt.executeQuery()){
+                while (rs.next()) {
+                    int i = 1;
+                    groundAttendants.add(new GroundAttendant(rs.getInt(i++), rs.getString(i++), rs.getString(i++),rs.getDate(i++),
+                            rs.getDate(i++)));
+                }
+                return groundAttendants;
+
+            }
+
+            catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return groundAttendants;
+    }
+
+    /******GET Flight Attandents******/
+    //using SQL query to get data from Access file
+    public ArrayList<FlightAttendant> getFlightAttendants() throws Exception{
+        ArrayList<FlightAttendant> FlightAttendants= new ArrayList<FlightAttendant>();
+        try {
+            Class.forName(Consts.JDBC_STR);
+            //calling the GET query of all the airplanes
+            try (Connection conn = DriverManager.getConnection(Consts.CONN_STR);
+                 PreparedStatement stmt =   conn.prepareStatement(Consts.SQL_GET_ALL_FLIGHT_ATTENDANTS);
+                 ResultSet rs = stmt.executeQuery()){
+                while (rs.next()) {
+                    int i = 1;
+                    FlightAttendants.add(new FlightAttendant(rs.getInt(i++), rs.getString(i++), rs.getString(i++),rs.getDate(i++),
+                            rs.getDate(i++)));
+                }
+                return FlightAttendants;
+
+            }
+
+            catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return FlightAttendants;
+    }
+
+
+	/*********Creating a new shift**********/
+	public boolean createNewShift(Date start, Date end) {
+		
+		try {
+            Class.forName(Consts.JDBC_STR);
+            
+            try {
+            	Connection conn = DriverManager.getConnection(Consts.CONN_STR);
+            		//plane SQL
+                    PreparedStatement stmt = conn.prepareStatement(Consts.SQL_ADD_SHIFT);
+                    
+                    int i=1;
+                    Shift s = new Shift(start, end);
+                    stmt.setDate(1, start);
+                    stmt.setDate(2, end);
+                    stmt.executeUpdate();
+
+                    return true;
+                   
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+
+        }
+        return false;
+	}
+	/******GET SHIFTS******/
+	//using SQL query to get data from Access file
+	public ArrayList<Shift> getShifts() throws Exception{
+		 ArrayList<Shift> shifts= new ArrayList<Shift>();
+	        try {
+	            Class.forName(Consts.JDBC_STR);
+	            //calling the GET query of all the airplanes
+	            try (Connection conn = DriverManager.getConnection(Consts.CONN_STR);
+	    	            PreparedStatement stmt =   conn.prepareStatement(Consts.SQL_GET_ALL_SHIFTS);
+	    	            ResultSet rs = stmt.executeQuery()){  
+	    	            	while (rs.next()) {
+	    	            		int i = 1;
+	    	            		shifts.add(new Shift(rs.getDate(i++), rs.getDate(i++)));
+	    	            		}
+	    	    	        return shifts;
+
+	    	            }
+
+	             catch (SQLException e) {
+	                e.printStackTrace();
+	            }
+	        } catch (ClassNotFoundException e) {
+	            e.printStackTrace();
+	        }
+	        return shifts;
+	}
     
     /**
      * GET DATA FROM DB

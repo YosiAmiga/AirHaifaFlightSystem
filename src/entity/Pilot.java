@@ -1,5 +1,6 @@
 package entity;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Calendar;
 
@@ -7,7 +8,7 @@ public class Pilot extends Worker {
 	
 	/*Pilot fields*/
 	private int licenseNumber;
-	private Calendar licenseDateIssued;
+	private Date licenseDateIssued;
 	
 	/**
 	 * @param id
@@ -18,8 +19,8 @@ public class Pilot extends Worker {
 	 * @param licenseNumber
 	 * @param licenseDateIssued
 	 */
-	public Pilot(int id, String firstName, String lastName, Calendar startingDate, Calendar finishingDate,
-			int licenseNumber, Calendar licenseDateIssued) {
+	public Pilot(int id, String firstName, String lastName, Date startingDate, Date finishingDate,
+			int licenseNumber, Date licenseDateIssued) {
 		super(id, firstName, lastName, startingDate, finishingDate);
 		this.licenseNumber = licenseNumber;
 		this.licenseDateIssued = licenseDateIssued;
@@ -34,11 +35,11 @@ public class Pilot extends Worker {
 		this.licenseNumber = licenseNumber;
 	}
 
-	public Calendar getLicenseDateIssued() {
+	public Date getLicenseDateIssued() {
 		return licenseDateIssued;
 	}
 
-	public void setLicenseDateIssued(Calendar licenseDateIssued) {
+	public void setLicenseDateIssued(Date licenseDateIssued) {
 		this.licenseDateIssued = licenseDateIssued;
 	}
 

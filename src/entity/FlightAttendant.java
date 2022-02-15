@@ -1,5 +1,6 @@
 package entity;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -8,7 +9,7 @@ public class FlightAttendant extends Worker{
 	
 	private HashMap<String, Flight> flights;
 
-	public FlightAttendant(int id, String firstName, String lastName, Calendar startingDate, Calendar finishingDate) {
+	public FlightAttendant(int id, String firstName, String lastName, Date startingDate, Date finishingDate) {
 		super(id, firstName, lastName, startingDate, finishingDate);
 		flights = new HashMap<String, Flight>();
 	}

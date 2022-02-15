@@ -14,9 +14,9 @@
    <children>
       <BorderPane prefHeight="730.0" prefWidth="892.0">
          <right>
-            <VBox prefHeight="650.0" prefWidth="145.0" BorderPane.alignment="CENTER">
+            <VBox prefHeight="613.0" prefWidth="145.0" BorderPane.alignment="CENTER">
                <children>
-                  <ToggleButton fx:id="add" contentDisplay="TOP" mnemonicParsing="false" onAction="#loadAdd" prefHeight="268.0" prefWidth="253.0" styleClass="button" text="Manage data">
+                  <ToggleButton fx:id="add" contentDisplay="TOP" mnemonicParsing="false" onAction="#loadAdd" prefHeight="351.0" prefWidth="135.0" styleClass="button" text="Manage data">
                      <padding>
                         <Insets bottom="5.0" left="5.0" top="5.0" />
                      </padding>
@@ -34,7 +34,7 @@
                         <Insets bottom="15.0" left="5.0" right="5.0" top="5.0" />
                      </VBox.margin>
                   </ToggleButton>
-                  <ToggleButton fx:id="reports" contentDisplay="TOP" mnemonicParsing="false" onAction="#loadReport" prefHeight="118.0" prefWidth="136.0" styleClass="button" text="Reports">
+                  <ToggleButton fx:id="reports" contentDisplay="TOP" mnemonicParsing="false" onAction="#loadReport" prefHeight="304.0" prefWidth="135.0" styleClass="button" text="Reports">
                      <padding>
                         <Insets bottom="5.0" left="5.0" top="5.0" />
                      </padding>
@@ -52,43 +52,7 @@
                         <Insets bottom="15.0" left="5.0" right="5.0" top="5.0" />
                      </VBox.margin>
                   </ToggleButton>
-                  <ToggleButton contentDisplay="TOP" mnemonicParsing="false" prefHeight="126.0" prefWidth="208.0" selected="true" styleClass="button" text="TBD">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" top="5.0" />
-                     </padding>
-                     <graphic>
-                        <ImageView fitHeight="60.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/info.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="Arial Bold" size="16.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets bottom="15.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                  </ToggleButton>
-                  <ToggleButton contentDisplay="TOP" mnemonicParsing="false" prefHeight="126.0" prefWidth="208.0" selected="true" styleClass="button" text="TBD">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" top="5.0" />
-                     </padding>
-                     <graphic>
-                        <ImageView fitHeight="60.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/logout.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="Arial Bold" size="16.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets bottom="15.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                  </ToggleButton>
-                  <ToggleButton fx:id="exit" contentDisplay="TOP" mnemonicParsing="false" onAction="#exitProgram" prefHeight="126.0" prefWidth="208.0" selected="true" styleClass="button" text="Exit">
+                  <ToggleButton fx:id="exit" contentDisplay="TOP" mnemonicParsing="false" onAction="#exitProgram" prefHeight="223.0" prefWidth="135.0" selected="true" styleClass="button" text="Exit">
                      <padding>
                         <Insets bottom="5.0" left="5.0" top="5.0" />
                      </padding>
