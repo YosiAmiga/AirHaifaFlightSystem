@@ -27,6 +27,8 @@ public class ManagerFlyMainScreen implements Initializable{
 	@FXML
 	private ToggleButton reports;
 	@FXML
+	private ToggleButton reports1;
+	@FXML
 	private ToggleButton exit;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -62,6 +64,25 @@ public class ManagerFlyMainScreen implements Initializable{
 			{
 
 				Pane pane=FXMLLoader.load(getClass().getResource("ManagerReportsPage.fxml"));
+				pane.setPrefSize(rootPane.getWidth(), rootPane.getHeight());
+				rootPane.getChildren().removeAll(rootPane.getChildren());
+				rootPane.getChildren().add(pane);
+			}
+
+		} catch (IOException ex) {
+			// TODO Auto-generated catch block
+			ex.printStackTrace();
+		}
+	}
+	
+	//works
+	public void loadReport1(ActionEvent e)
+	{
+		try {
+			if(reports1.isSelected())
+			{
+
+				Pane pane=FXMLLoader.load(getClass().getResource("ManagerReportByDestination.fxml"));
 				pane.setPrefSize(rootPane.getWidth(), rootPane.getHeight());
 				rootPane.getChildren().removeAll(rootPane.getChildren());
 				rootPane.getChildren().add(pane);

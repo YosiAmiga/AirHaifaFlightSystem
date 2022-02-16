@@ -30,7 +30,44 @@ public class ControlFlight {
         return _instance;
     }
 
+	/*********get latest order**********/
+	public String getAirportByCountry(int airportID) {
+		String country = null;
+		try {
+            Class.forName(Consts.JDBC_STR);
+            
+            try {
+            	Connection conn = DriverManager.getConnection(Consts.CONN_STR);
+            		//plane SQL
+                    PreparedStatement stmt = conn.prepareStatement(Consts.SQL_GET_AIRPORT_COUNTRY);
+                    stmt.setInt(1, airportID);
 
+                    try(ResultSet rs = stmt.executeQuery())
+                    {
+    	            	while (rs.next()) {
+    	            		country = rs.getString(1);
+                    	
+    	            	}
+
+                    return country;
+                   
+                    } 
+                    catch (SQLException e) {
+                    	e.printStackTrace();
+                    }
+            } 
+            catch (Exception e) {
+            e.printStackTrace();
+            }
+        return country;
+		}
+		catch (Exception e) {
+            e.printStackTrace();
+           }
+        return country;
+
+	}
+	
     /******GET Pilots******/
     //using SQL query to get data from Access file
     public ArrayList<Pilot> getPilots() throws Exception{

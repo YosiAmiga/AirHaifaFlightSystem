@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -25,13 +27,24 @@
          </font>
       </Text>
       <TextField fx:id="seatsQuantity" layoutX="85.0" layoutY="210.0" promptText="Enter quantity" />
-      <DatePicker fx:id="departureDate" layoutX="377.0" layoutY="210.0" prefHeight="25.0" prefWidth="149.0" />
-      <DatePicker fx:id="arrivalDate" layoutX="617.0" layoutY="210.0" prefHeight="25.0" prefWidth="149.0" />
-      <Button fx:id="btnCreateReport" layoutX="287.0" layoutY="339.0" mnemonicParsing="false" onAction="#createReport" prefHeight="25.0" prefWidth="175.0" text="Create report" />
+      <DatePicker fx:id="departureDate" layoutX="377.0" layoutY="210.0" prefHeight="25.0" prefWidth="149.0" promptText="departure " />
+      <DatePicker fx:id="arrivalDate" layoutX="617.0" layoutY="210.0" prefHeight="25.0" prefWidth="149.0" promptText="arrival " />
       <Text layoutX="14.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select &quot;Low-Cost&quot; seats quantity:" textAlignment="CENTER" underline="true" wrappingWidth="307.3333740234375">
          <font>
             <Font name="Arial Bold Italic" size="18.0" />
          </font>
       </Text>
+      <Button fx:id="btnCreateReport" layoutX="321.0" layoutY="264.0" mnemonicParsing="false" onAction="#createReport" prefHeight="25.0" prefWidth="175.0" text="Create report" />
+      <TableView fx:id="flightTable" layoutX="3.0" layoutY="319.0" prefHeight="235.0" prefWidth="836.0">
+         <columns>
+            <TableColumn fx:id="fNumber" prefWidth="125.59997177124023" text="Flight number" />
+            <TableColumn fx:id="fDeparture" prefWidth="192.80001831054688" text="Departure" />
+            <TableColumn fx:id="fArrival" prefWidth="220.0" text="Arrival" />
+            <TableColumn fx:id="fAirplane" prefWidth="90.39996337890625" text="Airplane" />
+            <TableColumn fx:id="fStatus" prefWidth="77.60003662109375" text="Status" />
+            <TableColumn fx:id="fOrigin" prefWidth="105.3333740234375" text="Origin" />
+            <TableColumn fx:id="fDestination" prefWidth="119.9998779296875" text="Destination" />
+         </columns>
+      </TableView>
    </children>
 </Pane>

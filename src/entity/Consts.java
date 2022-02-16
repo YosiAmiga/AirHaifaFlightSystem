@@ -22,10 +22,12 @@ public class Consts {
 			  "{ call SQL_ADD_SEAT(?,?,?,?) }";
 	  
 	//selection queries
+	  
 	  	public static final String SQL_GET_ALL_FLIGHT_ATTENDANTS = "SELECT * FROM FlightAttendant";
 		public static final String SQL_GET_ALL_GROUND_ATTENDANTS= "SELECT * FROM GroundAttendant";
 		public static final String SQL_GET_ALL_PILOTS= "SELECT * FROM Pilot";
 
+		public static final String SQL_GET_AIRPORT_COUNTRY= "{ call SQL_GET_AIRPORT_COUNTRY(?) }";
 	  public static final String SQL_GET_ALL_SHIFTS= "SELECT * FROM Shift";
 
 	  public static final String SQL_GET_FLIGHT= "{ call SQL_GET_FLIGHT(?) }";
@@ -61,7 +63,10 @@ public class Consts {
 			  "{ call SQL_DELETE_SEAT(?) }";
 	  
 	//reports queries
+	  
 	  public static final String BIG_FLIGHTS_REPORT =
+	  "{ call BIG_FLIGHTS_REPORT(?,?,?) }";
+	  public static final String BIG_FLIGHTS_REPORT2 =
 			  "SELECT Flight.FlightSerialNumber, Airport.Country, Airport.City, Airport_1.Country AS CountryTo, Airport_1.City AS CityTo, Flight.FlightDeparture, Flight.FlightArrival, Flight.Status \n"
 			  + "FROM Airport INNER JOIN ((Flight INNER JOIN Airport AS Airport_1 ON Flight.DestinationAirportID = Airport_1.UniqueAirportID) INNER JOIN QueryCountSeat ON Flight.AirplaneSerialNumber = QueryCountSeat.TailNumber) ON TblAirport.Code = TblFlight.CodeDepartureAirport\n"
 			  + "WHERE (((TblFlight.DepartureTime)>=[startDate] And (TblFlight.DepartureTime)<=[endDate]) AND ((TblFlight.LandingTime)>=[startDate] And (TblFlight.LandingTime)<=[endDate]) AND ((QueryCountSeat.CountOfSeatID)>=[seats]))\n"

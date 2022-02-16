@@ -175,7 +175,7 @@ public class ManagerFlyScreen implements Initializable {
 		e.printStackTrace();
 	}
 	return airplanes;	
-}	
+	}	
 	
 	
 	/**************************************Airplane Page*****************************************/
@@ -1078,7 +1078,6 @@ public class ManagerFlyScreen implements Initializable {
 		fStatus.setCellValueFactory(new PropertyValueFactory<Flight, FlightStatus>("status"));
 		fOrigin.setCellValueFactory(new PropertyValueFactory<Flight, Integer>("originAirport"));
 		fDestination.setCellValueFactory(new PropertyValueFactory<Flight, Integer>("destinationAirport"));
-		flightTable.setItems(getFlightsToTable());
 		flightTable.setItems(getFlightsToTable());
 		
 		
